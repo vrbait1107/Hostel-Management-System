@@ -4,3 +4,5 @@ A web application developed to handle various activities of a hostel such as sto
 Users:
 Admin (Hostel warden or caretaker)
  and Student 
+
+Implemented using HTML5,CSS,Javascript, Twitter Bootstrap Framework for front-end and PHP, MySql for back-end of the web application.
