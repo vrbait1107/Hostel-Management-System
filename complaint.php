@@ -87,7 +87,7 @@ try {
 				<h3 class="text-center font-Staatliches-heading">Complaint Form</h3>
 				<hr />
 
-				<h4 class="text-center font-time mb-3">Contact us today, and get reply with in 24 hours!</h4>
+				<h5 class="text-center font-sans mb-3">Contact us today, and get reply with in 24 hours!</h5>
 
 				<form action="" method="post">
 

@@ -25,7 +25,7 @@
       </li>
 
        <li class="nav-item">
-        <a class="nav-link" href="contact.php">Hostel Committee</a>
+        <a class="nav-link" href="student_commitee.php">Hostel Committee</a>
       </li>
 
        <li class="nav-item">
