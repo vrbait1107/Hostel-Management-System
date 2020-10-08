@@ -20,6 +20,18 @@
       </li>
 
        <li class="nav-item">
+        <a class="nav-link" href="complaint.php">Complaint</a>
+      </li>
+
+       <li class="nav-item">
+        <a class="nav-link" href="feedback.php">Feedback</a>
+      </li>
+
+       <li class="nav-item">
+        <a class="nav-link" href="allotment_list.php">Allotment List</a>
+      </li>
+
+       <li class="nav-item">
         <a class="nav-link" href="faqs.php">FAQs</a>
       </li>
 

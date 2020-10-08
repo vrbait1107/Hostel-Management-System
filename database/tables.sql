@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `user_iformation` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
--- Register User
+-- Administartors
 
 CREATE TABLE IF NOT EXISTS `admin_information` (  
   `username` varchar(200) NOT NULL,  
