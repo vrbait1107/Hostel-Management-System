@@ -1,38 +1,9 @@
 <?php
-if (isset($_POST["submit"])) {
 
-    if (!empty($_POST['user']) && !empty($_POST['pass'])) {
-        $user = $_POST['user'];
-        $pass = $_POST['pass'];
+//----------------------------->> DB CONFIG
+require_once "config/configPDO.php";
 
-        $con = mysql_connect('localhost', 'root', '') or die(mysql_error());
-        mysql_select_db('mysql') or die("cannot select DB");
-
-        $query = mysql_query("SELECT * FROM admin WHERE username='" . $user . "' AND password='" . $pass . "'");
-        $numrows = mysql_num_rows($query);
-        if ($numrows != 0) {
-            while ($row = mysql_fetch_assoc($query)) {
-                $dbusername = $row['username'];
-                $dbpassword = $row['password'];
-            }
-
-            if ($user == $dbusername && $pass == $dbpassword) {
-                session_start();
-                $_SESSION['sess_user'] = $user;
-
-                /* Redirect browser */
-                header("Location: admin_page.php");
-            }
-        } else {
-            $error_message = "Invalid username or password!";
-        }
-
-    } else {
-        $error_message = "All fields are required!";
-    }
-}
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,20 +12,12 @@ if (isset($_POST["submit"])) {
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hostel Management System Home page</title>
+  <title>HOSTEL MANAGEMENT SYSTEM | ADMIN LOGIN</title>
 
   <!-- Include HeaderScripts -->
   <?php include_once "includes/headerScripts.php";?>
 
   <style>
-    .error-message {
-      padding: 7px 10px;
-      background: #fff1f2;
-      border: #ffd5da 1px solid;
-      color: #d6001c;
-      border-radius: 10px;
-      width: 100%;
-    }
 
     #topContainer {
       background-image: url("images/7.jpg");
@@ -86,6 +49,56 @@ if (isset($_POST["submit"])) {
 
 <body>
 
+<?php
+
+try {
+
+    if (isset($_POST["submit"])) {
+
+        $userName = htmlspecialchars($_POST["userName"]);
+        $password = htmlspecialchars($_POST["password"]);
+
+        # Sql Query
+        $sql = "SELECT password from admin_information WHERE username";
+
+        # Prepare Query
+        $result = $conn->prepare($sql);
+
+        # Binding Value
+        $result->bindValue(":userName", $userName);
+
+        # Execute Query
+        $result->execute();
+
+        $row = $result->fetch(PDO::FETCH_ASSOC);
+
+        $dbpassword = $row["password"];
+
+        if (password_verify($password, $dbpassword)) {
+
+            # If verify redirect to Index Page
+            $_SESSION['admin'] = $userName;
+            header("Location: admin_page.php");
+
+        } else {
+            echo "<script>Swal.fire({
+                      icon: 'error',
+                      title: 'Unable to Login',
+                      text: 'Please Check Your Credentials'
+                  })</script>";
+
+        }
+
+    }
+
+} catch (PDOException $e) {
+    echo "<script>alert('We are sorry, there seems to be a problem with our systems. Please try again.');</script>";
+    # Development Purpose Error Only
+    echo "Error " . $e->getMessage();
+}
+
+?>
+
   <!-- Include Navbar -->
   <?php include_once "includes/authNavbar.php";?>
 
@@ -99,25 +112,18 @@ if (isset($_POST["submit"])) {
         <h1 class="margintop font-Staatliches-heading">HOSTEL MANAGEMENT SYSTEM</h1>
 
         <form class="margintop" action="" method="POST">
+
           <div class="form-group">
-            <input type="email" placeholder="Email" name="user" class="form-control" />
+            <input type="email" placeholder="Enter Your Email" name="userName" class="form-control" />
           </div>
+
           <div class="form-group">
-            <input type="password" placeholder="Password" name="pass" class="form-control" />
+            <input type="password" placeholder="Enter Your Password" name="password" class="form-control" />
           </div>
 
           <input class="btn btn-primary btn-block rounded-pill" type="submit" value="Login" name="submit" />
 
         </form>
-
-        <br>
-
-        <?php if (!empty($error_message)) {?>
-        <div class="error-message"><?php if (isset($error_message)) {
-    echo $error_message;
-}
-    ?></div>
-        <?php }?>
 
 
       </div>

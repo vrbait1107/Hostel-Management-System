@@ -1,58 +1,9 @@
 <?php
 
-if (!empty($_POST["register-user"])) {
-    /* Form Required Field Validation */
-    foreach ($_POST as $key => $value) {
-        if (empty($_POST[$key])) {
-            $error_message = "All Fields are required";
-            break;
-        }
-    }
-    /* Password Matching Validation */
-    if ($_POST['password'] != $_POST['confirmPassword']) {
-        $error_message = 'Passwords should be same<br>';
-    }
-
-    /* Email Validation */
-    if (!isset($error_message)) {
-        if (!filter_var($_POST["userEmail"], FILTER_VALIDATE_EMAIL)) {
-            $error_message = "Invalid Email Address";
-        }
-    }
-
-    /* Validation to check if gender is selected */
-    if (!isset($error_message)) {
-        if (!isset($_POST["gender"])) {
-            $error_message = " All Fields are required";
-        }
-    }
-
-    /* Validation to check if Terms and Conditions are accepted */
-    if (!isset($error_message)) {
-        if (!isset($_POST["terms"])) {
-            $error_message = "Accept Terms and Conditions to Register";
-        }
-    }
-
-    if (!isset($error_message)) {
-        require_once "dbcontroller.php";
-        $db_handle = new DBController();
-        $query = "INSERT INTO registered_users (user_name, first_name, last_name, password, email, gender) VALUES
-		('" . $_POST["userName"] . "', '" . $_POST["firstName"] . "', '" . $_POST["lastName"] . "', '" . md5($_POST["password"]) . "', '" . $_POST["userEmail"] . "', '" . $_POST["gender"] . "')";
-        $result = $db_handle->insertQuery($query);
-        if (!empty($result)) {
-            $error_message = "";
-            $success_message = "You have registered successfully!";
-            $sql = "INSERT INTO login(username,password) VALUES('" . $_POST["userEmail"] . "','" . md5($_POST["password"]) . "')";
-
-            $result1 = $db_handle->insertQuery($sql);
-            unset($_POST);
-        } else {
-            $error_message = "Problem in registration. Try Again!";
-        }
-    }
-}
+// -------------------------------->> DB CONFIG
+require_once "config/configPDO.php";
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -61,33 +12,86 @@ if (!empty($_POST["register-user"])) {
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>PHP User Registration Form</title>
+	<title>HOSTEL MANAGEMENT SYSTEM | REGISTER</title>
 
 	<!-- Include HeaderScripts -->
 	<?php include_once "includes/headerScripts.php";?>
 
-	<style>
-		.error-message {
-			padding: 7px 10px;
-			background: #fff1f2;
-			border: #ffd5da 1px solid;
-			color: #d6001c;
-			border-radius: 10px;
-			width: 120%;
-		}
 
-		.success-message {
-			padding: 7px 10px;
-			background: #cae0c4;
-			border: #c3d0b5 1px solid;
-			color: #027506;
-			border-radius: 10px;
-			width: 120%;
-		}
-	</style>
 </head>
 
 <body>
+
+<?php
+
+try {
+
+    if (isset($_POST["register-user"])) {
+
+        if (isset($_POST["terms"])) {
+
+            $userName = htmlspecialchars($_POST["userName"]);
+            $firstName = htmlspecialchars($_POST["firstName"]);
+            $lastName = htmlspecialchars($_POST["lastName"]);
+            $password = htmlspecialchars($_POST["password"]);
+            $confirmPassword = htmlspecialchars($_POST["confirmPassword"]);
+            $gender = htmlspecialchars($_POST["gender"]);
+
+            # Hash Password
+            $hashPass = password_hash($password, PASSWORD_BCRYPT);
+            $hashConPass = password_hash($confirm_password, PASSWORD_BCRYPT);
+
+            # Sql Query
+            $sql = "INSERT INTO registered_users (userName, firstName, lastName, password, email, gender) VALUES
+		(:userName, :firstName, :lastName, :hashPass, :email, :gender)";
+
+            # Prepare Query
+            $result = $conn->prepare($sql);
+
+            # Binding Value
+            $result->bindValue(":userName", $userName);
+            $result->bindValue(":firstName", $firstName);
+            $result->bindValue(":lastName", $lastName);
+            $result->bindValue(":hashPass", $hashPass);
+            $result->bindValue(":email", $email);
+            $result->bindValue(":gender", $gender);
+
+            # Execute Query
+            $result->execute();
+
+            if ($result) {
+                echo "<script>Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: 'You have registered successfully!',
+				})</script>";
+
+            } else {
+                echo "<script>Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'We failed to register you!',
+                })</script>";
+            }
+
+        } else {
+            echo "<script>Swal.fire({
+                    icon: 'warning',
+                    title: 'Warning',
+                    text: 'We failed to register you!',
+                })</script>";
+
+        }
+
+    }
+
+} catch (PDOException $e) {
+    echo "<script>alert('We are sorry, there seems to be a problem with our systems. Please try again.');</script>";
+    # Development Purpose Error Only
+    echo "Error " . $e->getMessage();
+}
+
+?>
 
 	<!-- Include Navbar -->
 	<?php include_once "includes/authNavbar.php";?>
@@ -99,6 +103,8 @@ if (!empty($_POST["register-user"])) {
 			<div class="col-md-6 offset-md-3">
 
 				<h3 class="font-time  text-center text-uppercase">Register Here</h3>
+
+				<form action="" method="post" id="userRegisterForm">
 
 				<div class="form-group">
 					<label for="userName">Username</label>
@@ -161,13 +167,15 @@ if (!empty($_POST["register-user"])) {
 
 				<div class="form-check">
 					<label class="form-check-label">
-						<input type="checkbox" class="form-check-input" name="" id="" value="checkedValue">
+						<input type="checkbox" class="form-check-input" name="terms" id="terms" value="checkedValue">
 						I accept Terms and Conditions
 					</label>
 				</div>
 
 				<button type="submit" name="register-user" id="register-user"
 					class="btn btn-primary mt-3">Submit</button>
+
+					</form>
 
 
 			</div>
