@@ -12,6 +12,10 @@
 
 </head>
 
+   <!-- Include Navbar -->
+   <?php include_once "includes/navbar.php";?>
+
+
 
 <br>
 <div class="panel panel-primary" style="color:#26aae1;">

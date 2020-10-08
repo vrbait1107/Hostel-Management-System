@@ -1,4 +1,5 @@
 <?php
+
 if (!empty($_POST["register-user"])) {
     /* Form Required Field Validation */
     foreach ($_POST as $key => $value) {
@@ -8,7 +9,7 @@ if (!empty($_POST["register-user"])) {
         }
     }
     /* Password Matching Validation */
-    if ($_POST['password'] != $_POST['confirm_password']) {
+    if ($_POST['password'] != $_POST['confirmPassword']) {
         $error_message = 'Passwords should be same<br>';
     }
 
@@ -52,25 +53,20 @@ if (!empty($_POST["register-user"])) {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-
-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>PHP User Registration Form</title>
 
 	<!-- Include HeaderScripts -->
 	<?php include_once "includes/headerScripts.php";?>
 
 	<style>
-		body {
-			width: 610px;
-			font-family: calibri;
-		}
-
 		.error-message {
 			padding: 7px 10px;
 			background: #fff1f2;
@@ -88,117 +84,94 @@ scale=1">
 			border-radius: 10px;
 			width: 120%;
 		}
-
-		.demo-table {
-			background: #d9eeff;
-			width: 120%;
-			border-spacing: initial;
-			margin: 2px 0px;
-			word-break: break-word;
-			table-layout: auto;
-			line-height: 1.8em;
-			color: #333;
-			border-radius: 4px;
-			padding: 0px 40px;
-		}
-
-		.demo-table td {
-			padding: 15px 0px;
-		}
-
-		.demoInputBox {
-			padding: 10px 30px 10px 100px;
-			border: #a9a9a9 1px solid;
-			border-radius: 4px;
-
-		}
-
-		.btnRegister {
-			padding: 10px 30px;
-			background-color: #3367b2;
-			border: 0;
-			color: #FFF;
-			cursor: pointer;
-			border-radius: 4px;
-			margin-left: 10px;
-		}
 	</style>
 </head>
 
 <body>
-	<div class="container contentContainer">
-		<form name="frmRegistration" method="post" action="">
-			<table border="0" width="100" align="center" class="demo-table">
-				<?php if (!empty($success_message)) {?>
-				<div class="success-message"><?php if (isset($success_message)) {
-    echo $success_message;
-}
-    ?></div>
-				<?php }?>
-				<?php if (!empty($error_message)) {?>
-				<div class="error-message"><?php if (isset($error_message)) {
-    echo $error_message;
-}
-    ?></div>
-				<?php }?>
-				<tr>
-					<td>User Name</td>
-					<td><input type="text" class="demoInputBox" name="userName" value="<?php if (isset($_POST['userName'])) {
-    echo $_POST['userName'];
-}
-?>"></td>
-				</tr>
-				<tr>
-					<td>First Name</td>
-					<td><input type="text" class="demoInputBox" name="firstName" value="<?php if (isset($_POST['firstName'])) {
-    echo $_POST['firstName'];
-}
-?>"></td>
-				</tr>
-				<tr>
-					<td>Last Name</td>
-					<td><input type="text" class="demoInputBox" name="lastName" value="<?php if (isset($_POST['lastName'])) {
-    echo $_POST['lastName'];
-}
-?>"></td>
-				</tr>
-				<tr>
-					<td>Password</td>
-					<td><input type="password" class="demoInputBox" name="password" value=""></td>
-				</tr>
-				<tr>
-					<td>Confirm Password</td>
-					<td><input type="password" class="demoInputBox" name="confirm_password" value=""></td>
-				</tr>
-				<tr>
-					<td>Email</td>
-					<td><input type="text" class="demoInputBox" name="userEmail" value="<?php if (isset($_POST['userEmail'])) {
-    echo $_POST['userEmail'];
-}
-?>"></td>
-				</tr>
-				<tr>
-					<td>Gender</td>
-					<td><input type="radio" name="gender" value="Male"
-							<?php if (isset($_POST['gender']) && $_POST['gender'] == "Male") {?>checked<?php }?>> Male
-						<input type="radio" name="gender" value="Female"
-							<?php if (isset($_POST['gender']) && $_POST['gender'] == "Female") {?>checked<?php }?>>
-						Female
-					</td>
-				</tr>
-				<tr>
-					<td colspan=2>
-						<input type="checkbox" name="terms"> I accept Terms and Conditions <input type="submit"
-							name="register-user" value="Register" class="btnRegister"></td>
-				</tr>
-			</table>
-		</form>
 
-		<p><input type="button" class="btn btn-primary" value="Admin Login" onclick="location.href = 'admin_login.php'">
+	<!-- Include Navbar -->
+	<?php include_once "includes/authNavbar.php";?>
 
-			<input type="button" class="btn btn-primary" value="Students Login"
-				onclick="location.href = 'project_login.php'"></p>
 
+	<div class="container my-5">
+		<div class="row">
+
+			<div class="col-md-6 offset-md-3">
+
+				<h3 class="font-time  text-center text-uppercase">Register Here</h3>
+
+				<div class="form-group">
+					<label for="userName">Username</label>
+					<input type="text" name="userName" id="userName" class="form-control"
+						placeholder="Enter Your Username">
+				</div>
+
+				<div class="form-group">
+					<label for="userEmail">Email</label>
+					<input type="email" name="userEmail" id="userEmail" class="form-control"
+						placeholder="Enter Your Username">
+				</div>
+
+
+				<div class="form-group">
+					<label for="firstName">First Name</label>
+					<input type="text" name="firstName" id="firstName" class="form-control"
+						placeholder="Enter Your Username">
+				</div>
+
+				<div class="form-group">
+					<label for="lastName">Last Name</label>
+					<input type="text" name="lastName" id="lastName" class="form-control"
+						placeholder="Enter Your Username" aria-describedby="helpId">
+				</div>
+
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input type="password" name="password" id="password" class="form-control"
+						placeholder="Enter Your Username" aria-describedby="helpId">
+				</div>
+
+				<div class="form-group">
+					<label for="confirmPassword">Confirm Password</label>
+					<input type="password" name="confirmPassword" id="confirmPassword" class="form-control"
+						placeholder="Enter Your Username" aria-describedby="helpId">
+				</div>
+
+
+
+				<div class="form-group">
+					<label for="gender">Gender</label>
+
+					<div class="form-check">
+						<label class="form-check-label">
+							<input type="radio" class="form-check-input" name="gender" id="gender" value="Male">
+							Male
+						</label>
+					</div>
+
+					<div class="form-check">
+						<label class="form-check-label">
+							<input type="radio" class="form-check-input" name="gender" id="gender" value="Female">
+							Female
+						</label>
+					</div>
+
+				</div>
+
+
+				<div class="form-check">
+					<label class="form-check-label">
+						<input type="checkbox" class="form-check-input" name="" id="" value="checkedValue">
+						I accept Terms and Conditions
+					</label>
+				</div>
+
+				<button type="submit" name="register-user" id="register-user"
+					class="btn btn-primary mt-3">Submit</button>
+
+
+			</div>
+		</div>
 	</div>
 
 	<!-- Include FooterScripts -->

@@ -13,6 +13,9 @@
 
 <body>
 
+  <!-- Include Navbar -->
+   <?php include_once "includes/navbar.php";?>
+
 
     <div class="panel panel-primary" style="color:#26aae1;">
         <div class="panel-heading" style="background:#d3eef9; text-align:center;font-weight:bold;font-size:30px;"><i
@@ -33,7 +36,9 @@
                 <li><i class="fa fa-bank"></i> Student Section&nbsp; <br>
                     <i class="fa fa-phone-square"></i>&nbsp;Telephone Number&nbsp;&nbsp;+91-9039006447 </li><br><br>
                 <li><i class="fa fa-bank"></i> Establishment Section&nbsp; <br>
-                    <i class="fa fa-phone-square"></i>&nbsp;Telephone Number&nbsp;&nbsp;+91-9039006448 </li><br><br>
+                    <i class="fa fa-phone-square"></i>&nbsp;Telephone Number&nbsp;&nbsp;+91-9039006448 </li><br><br> -->
+
+
 
                 <!-- Include FooterScripts -->
                 <?php include_once "includes/footerScripts.php";?>

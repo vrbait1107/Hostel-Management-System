@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS `registered_users` (
   `user_name` varchar(255) NOT NULL,
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
-  `password` varchar(25) NOT NULL,
+  `password` varchar(200) NOT NULL,
   `email` varchar(55) NOT NULL,
   `gender` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)

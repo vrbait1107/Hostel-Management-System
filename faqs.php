@@ -12,12 +12,11 @@
 
 </head>
 
-<body
-	class="html not-front not-logged-in one-sidebar sidebar-second page-node page-node- page-node-8875 node-type-page custom-background">
+<body>
 
 
-
-
+  <!-- Include Navbar -->
+   <?php include_once "includes/navbar.php";?>
 
 
 	<div class="container-fluid university-page">
