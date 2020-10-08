@@ -16,6 +16,10 @@ nav a {
   font-size: 22px;
 }
 
+.font-Staatliches {
+  font-family: "Staatliches", cursive !important;
+}
+
 .font-Staatliches-heading {
   font-family: "Staatliches", cursive !important;
   font-size: 50px !important;

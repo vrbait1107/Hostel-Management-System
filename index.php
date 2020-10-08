@@ -1,8 +1,8 @@
 <?php
-session_start();
-if (!isset($_SESSION["sess_user"])) {
-    header("location: project_login.php");
-}
+// session_start();
+// if (!isset($_SESSION["sess_user"])) {
+//     header("location: project_login.php");
+// }
 ?>
 
 <!DOCTYPE html>
@@ -136,11 +136,7 @@ scale=1">
 
     <div class="row marginbottom">
       <div class="col-md-4 margintop">
-        <h2><span class="glyphicon glyphicon-book"></span> Rules and Regulations</h2>
-        <p>Information regarding the rules and regulations of the hostel</p>
-
-        <input type="button" class="btn btn-success" value="Open" onclick="location.href = 'rules.php'">
-      </div>
+              </div>
 
       <div class="col-md-4 margintop">
         <h2><span class="glyphicon glyphicon-list-alt"></span> Hostel Committee</h2>
@@ -184,6 +180,21 @@ scale=1">
 
     </div>
 
+  </div>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+
+      <h2 class="text-center">Rules and Regulations</h2>
+        <p>Information regarding the rules and regulations of the hostel</p>
+
+        <input type="button" class="btn btn-success" value="Open" onclick="location.href = 'rules.php'">
+
+
+      </div>
+    </div>
   </div>
 
   <!-- Include FooterScripts -->

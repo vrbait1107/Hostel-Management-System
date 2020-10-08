@@ -8,10 +8,11 @@
     <ul class="navbar-nav ml-auto">
 
       <li class="nav-item">
-        <a class="nav-link" href="#">Home</a>
+        <a class="nav-link" href="index.php">Home</a>
       </li>
 
-      <li class="nav-item">
+
+       <li class="nav-item">
         <a class="nav-link" href="about_us.php">About</a>
       </li>
 
@@ -19,8 +20,16 @@
         <a class="nav-link" href="contact.php">Contact Us</a>
       </li>
 
+      <li class="nav-item">
+        <a class="nav-link" href="rules.php">Rule & Regulation</a>
+      </li>
+
        <li class="nav-item">
-        <a class="nav-link" href="complaint.php">Complaint</a>
+        <a class="nav-link" href="contact.php">Hostel Committee</a>
+      </li>
+
+       <li class="nav-item">
+        <a class="nav-link" href="complaint.php">Complaints</a>
       </li>
 
        <li class="nav-item">
@@ -28,7 +37,7 @@
       </li>
 
        <li class="nav-item">
-        <a class="nav-link" href="allotment_list.php">Allotment List</a>
+        <a class="nav-link" href="allotment_list.php">Room Allotment List</a>
       </li>
 
        <li class="nav-item">
