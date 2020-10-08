@@ -9,15 +9,15 @@
 
 
        <li class="nav-item">
-        <a class="nav-link" href="registration_form.php">Register</a>
+        <a class="nav-link" href="register.php">Register</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="admin_login.php">Admin Login</a>
+        <a class="nav-link" href="admin/admin_login.php">Admin Login</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="project_login.php">Student Login</a>
+        <a class="nav-link" href="login.php">Student Login</a>
       </li>
 
     </ul>

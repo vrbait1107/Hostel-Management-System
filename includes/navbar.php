@@ -55,7 +55,7 @@
                     <a class="dropdown-item" href="#">My Profile</a>
                     <a class="dropdown-item" href="#">Account</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" id="userLogout" href="#">Log out</a>
+                    <a class="dropdown-item" id="userLogout" href="logout.php">Log out</a>
                 </div>
             </li>
         </ul>
