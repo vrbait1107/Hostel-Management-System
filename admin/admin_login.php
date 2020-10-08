@@ -1,7 +1,7 @@
 <?php
 
 //----------------------------->> DB CONFIG
-require_once "config/configPDO.php";
+require_once "../config/configPDO.php";
 
 ?>
 
@@ -15,12 +15,13 @@ require_once "config/configPDO.php";
   <title>HOSTEL MANAGEMENT SYSTEM | ADMIN LOGIN</title>
 
   <!-- Include HeaderScripts -->
-  <?php include_once "includes/headerScripts.php";?>
+  <?php include_once "../includes/headerScripts.php";?>
+  <link rel="stylesheet" href="../css/common.css">
 
   <style>
 
     #topContainer {
-      background-image: url("images/7.jpg");
+      background-image: url("../images/7.jpg");
       height: 500px;
       width: 100%;
       background-size: cover;
@@ -100,10 +101,10 @@ try {
 ?>
 
   <!-- Include Navbar -->
-  <?php include_once "includes/authNavbar.php";?>
+  <?php include_once "../includes/authNavbar.php";?>
 
 
-  <div class="container contentContainer" id="topContainer">
+  <div class="container" id="topContainer">
 
     <div class="row">
 
@@ -132,7 +133,7 @@ try {
 
 
   <!-- Include FooterScripts -->
-  <?php include_once "includes/footerScripts.php";?>
+  <?php include_once "../includes/footerScripts.php";?>
 
 </body>
 

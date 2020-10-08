@@ -9,56 +9,84 @@
 
 </head>
 
-<div class="panel panel-primary" style="color:#26aae1;">
-    <div class="panel-heading" style="background:#d3eef9; text-align:center;font-weight:bold;font-size:30px;"><i
-            class="fa fa-bars" style="background:#26aae1;color:white; " aria-hidden="true"></i> Student Feedback</div>
-    <br>
-
     <body>
 
-        <div class="table-scrol">
+
+         <div class="container">
+        <div class="row">
+            <section class="col-md-12">
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered table-hover table-striped" style="table-layout: fixed">
 
 
-            <div class="table-responsive">
-                <!--this is used for responsive display in mobile and other devices-->
+                        <thead>
+                            <tr class="tableizer-firstrow">
+                                <th>Name</th>
+                                <th>Complaint </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <?php
+
+try {
+
+    # Sql Query
+    $sql = "SELECT * FROM complaints";
+
+    # Prepare Query
+    $result = $conn->prepare($sql);
+
+    # Execute Query
+    $result->execute();
+
+    # Checking Wether Count Greater than 0
+    if ($result->rowCount() > 0) {
+
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+            ?>
+
+                            <tr>
+                                <td><?php echo $row["userName"]; ?></td>
+                                <td><?php echo $row["student_feedback"]; ?></td>
+                            </tr>
 
 
-                <table class="table table-bordered table-hover table-striped" style="table-layout: fixed">
+                            <?php
 
-                    <thead style="background:#26aae1;">
-                        <tr class="tableizer-firstrow">
-                            <th> Name </th>
-                            <th> Feedback </th>
-                        </tr>
-                    </thead>
+        }
+
+        ?>
+
+                        </tbody>
+                    </table>
 
                     <?php
-include "Db_conection.php";
-$view_users_query = "select * from feedback"; //select query for viewing users.
-$run = mysqli_query($dbcon, $view_users_query); //here run the sql query.
 
-while ($row = mysqli_fetch_array($run)) //while look to fetch the result and store in a array $row.
-{
-    $user_name = $row[0];
-    $user_feed = $row[1];
+    } else {
+        echo "<tr><td colspan='2'>No Records Found</td></tr>";
+    }
 
-    ?>
+} catch (PDOException $e) {
+    echo "<script>alert('We are sorry, there seems to be a problem with our systems. Please try again.');</script>";
+    # Development Purpose Error Only
+    echo "Error " . $e->getMessage();
+}
 
-                    <tr>
-                        <!--here showing results in the table -->
-                        <td><?php echo $user_name; ?></td>
-                        <td><?php echo $user_feed; ?></td>
+?>
+                </div>
 
-
-                    </tr>
-
-                    <?php }?>
-
-                </table>
-            </div>
+            </section>
         </div>
+    </div>
 
-        <!-- Include FooterScripts -->
+
+
+               <!-- Include FooterScripts -->
         <?php include_once "includes/footerScripts.php";?>
 
     </body>

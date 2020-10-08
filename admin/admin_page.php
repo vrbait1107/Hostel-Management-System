@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION["sess_user"])) {
+if (!isset($_SESSION["admin"])) {
     header("location: admin_login.php");
 }
 ?>
@@ -11,9 +11,9 @@ if (!isset($_SESSION["sess_user"])) {
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-
-scale=1">
-  <title>Hostel Management System Admin Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>HOSTEL MANAGEMENT SYSTEM | ADMINISTRATOR DASHBOARD</title>
 
   <!-- Include HeaderScripts -->
   <?php include_once "includes/headerScripts.php";?>
@@ -89,38 +89,9 @@ scale=1">
 
 <body>
 
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand">NIT RAIPUR</a>
-      </div>
-      <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-
-          <li class="active"><a href="#home">Home</a></li>
-
-          <li><a href="about_us.php">About</a></li>
-          <li><a href="contact.php">Contact Us</a></li>
-          <li><a href="faqs.php">FAQs</a></li>
-        </ul>
-        <div class="navbar-form navbar-right">
-          <!--<button class="btn btn-success" href="www.google.com">Logout</button>-->
-          <input type="button" class="btn btn-success" value="Logout" onclick="location.href = 'project_logout.php'">
-        </div>
-
-      </div>
-    </div>
-  </nav>
 
 
-
-  <div class="container contentContainer">
+  <div class="container">
 
     <div class="row" class="center">
 
