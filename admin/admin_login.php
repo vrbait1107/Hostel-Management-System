@@ -27,7 +27,6 @@ if (isset($_SESSION["admin"])) {
   <link rel="stylesheet" href="../css/common.css">
 
   <style>
-
     #topContainer {
       background-image: url("../images/7.jpg");
       height: 500px;
@@ -58,7 +57,7 @@ if (isset($_SESSION["admin"])) {
 
 <body>
 
-<?php
+  <?php
 
 try {
 
@@ -91,10 +90,10 @@ try {
 
         } else {
             echo "<script>Swal.fire({
-                      icon: 'error',
-                      title: 'Unable to Login',
-                      text: 'Please Check Your Credentials'
-                  })</script>";
+                icon: 'error',
+                title: 'Unable to Login',
+                text: 'Please Check Your Credentials'
+              })</script>";
 
         }
 
@@ -109,7 +108,7 @@ try {
 ?>
 
   <!-- Include Auth Navbar -->
-   <?php
+  <?php
 $userNavbarValue = "../login.php";
 $registerNavbarValue = "../register.php";
 $adminNavbarValue = "admin_login.php";

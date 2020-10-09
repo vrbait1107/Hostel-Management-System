@@ -19,7 +19,7 @@ if (!isset($_SESSION['user'])) {
 
 <head>
 	<link rel="shortcut icon" href="img/nitrr.ico" />
-	<title>::: National Institute of Technology Raipur :::</title>
+	<title>HOSTEL MANAGEMENT SYSTEM | STUDENT COMMITEE</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Include HeaderScripts -->

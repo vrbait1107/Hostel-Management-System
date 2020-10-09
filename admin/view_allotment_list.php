@@ -19,24 +19,24 @@ if (!isset($_SESSION["admin"])) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>HOSTEL MANAGEMENT SYSTEM | ALLOTMENT</title>
 
-  <!-- Include HeaderScripts -->
-  <?php include_once "../includes/headerScripts.php";?>
-  <link rel="stylesheet" href="../css/common.css">
+<!-- Include HeaderScripts -->
+<?php include_once "../includes/headerScripts.php";?>
+<link rel="stylesheet" href="../css/common.css">
 
 
 </head>
 
 <body>
 
-<!-- Include Admin Navbar -->
-  <?php include_once "../includes/adminNavbar.php";?>
+    <!-- Include Admin Navbar -->
+    <?php include_once "../includes/adminNavbar.php";?>
 
 
-   <div class="container">
+    <div class="container">
         <div class="row mt-5">
             <section class="col-md-12">
 
-             <h1 class="text-center font-Staatliches-heading">View Allotment List</h1>
+                <h1 class="text-center font-Staatliches-heading">View Allotment List</h1>
 
                 <div class="table-responsive">
 
@@ -115,9 +115,9 @@ try {
 
 
 
-        <!-- Include FooterScripts -->
-        <?php include_once "../includes/footerScripts.php";?>
+    <!-- Include FooterScripts -->
+    <?php include_once "../includes/footerScripts.php";?>
 
-    </body>
+</body>
 
 </html>

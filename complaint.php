@@ -61,17 +61,17 @@ try {
 
         if ($result) {
             echo "<script>Swal.fire({
-						icon: 'success',
-						title: 'Success',
-						text: 'Your complaint will be resolved as soon as possible!'
-					})</script>";
+					icon: 'success',
+					title: 'Success',
+					text: 'Your complaint will be resolved as soon as possible!'
+				})</script>";
 
         } else {
             echo "<script>Swal.fire({
-						icon: 'error',
-						title: 'Error',
-						text: 'Problem in submitting complaint. Try Again!'
-					})</script>";
+					icon: 'error',
+					title: 'Error',
+					text: 'Problem in submitting complaint. Try Again!'
+				})</script>";
         }
 
     }

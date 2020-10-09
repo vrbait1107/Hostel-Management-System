@@ -20,8 +20,8 @@ if (!isset($_SESSION["admin"])) {
 <title>Feedback</title>
 
 <!-- Include HeaderScripts -->
-  <?php include_once "../includes/headerScripts.php";?>
-  <link rel="stylesheet" href="../css/common.css">
+<?php include_once "../includes/headerScripts.php";?>
+<link rel="stylesheet" href="../css/common.css">
 
 </head>
 
@@ -29,8 +29,8 @@ if (!isset($_SESSION["admin"])) {
 
 <body>
 
-   <!-- Include Admin Navbar -->
-  <?php include_once "../includes/adminNavbar.php";?>
+    <!-- Include Admin Navbar -->
+    <?php include_once "../includes/adminNavbar.php";?>
 
 
 
@@ -38,7 +38,7 @@ if (!isset($_SESSION["admin"])) {
         <div class="row mt-5">
             <section class="col-md-12">
 
-             <h1 class="text-center font-Staatliches-heading">View Complaints</h1>
+                <h1 class="text-center font-Staatliches-heading">View Complaints</h1>
 
                 <div class="table-responsive">
 

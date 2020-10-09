@@ -26,7 +26,6 @@ if (isset($_SESSION['user'])) {
 
 
   <style>
-
     #topContainer {
       background-image: url("images/7.jpg");
       height: 500px;
@@ -51,13 +50,12 @@ if (isset($_SESSION['user'])) {
     .marginbottom {
       margin-bottom: 30px;
     }
-
   </style>
 </head>
 
 <body>
 
-<?php
+  <?php
 
 try {
 
@@ -90,10 +88,10 @@ try {
 
         } else {
             echo "<script>Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Check Your Credentials',
-                })</script>";
+                icon: 'error',
+                title: 'Error',
+                text: 'Check Your Credentials',
+              })</script>";
         }
 
     }
@@ -106,8 +104,8 @@ try {
 
 ?>
 
-<!-- Include Auth Navbar -->
-   <?php
+  <!-- Include Auth Navbar -->
+  <?php
 $userNavbarValue = "login.php";
 $registerNavbarValue = "register.php";
 $adminNavbarValue = "admin/admin_login.php";
@@ -147,7 +145,7 @@ include_once "includes/authNavbar.php";
 
 
   <!-- Include FooterScripts -->
-   <?php include_once "includes/footerScripts.php";?>
+  <?php include_once "includes/footerScripts.php";?>
 
 </body>
 
