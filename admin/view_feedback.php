@@ -31,11 +31,11 @@ if (!isset($_SESSION["admin"])) {
     <!-- Include Admin Navbar -->
     <?php include_once "../includes/adminNavbar.php";?>
 
-
-
          <div class="container">
-        <div class="row">
+        <div class="row mt-5">
             <section class="col-md-12">
+
+            <h1 class="text-center font-Staatliches-heading">View Feedbacks</h1>
 
                 <div class="table-responsive">
 
@@ -89,7 +89,7 @@ try {
                     <?php
 
     } else {
-        echo "<tr><td colspan='2'>No Records Found</td></tr>";
+        echo "<tr><td class='text-center' colspan='2'>No Records Found</td></tr>";
     }
 
 } catch (PDOException $e) {
@@ -108,7 +108,7 @@ try {
 
 
                <!-- Include FooterScripts -->
-        <?php include_once "includes/footerScripts.php";?>
+        <?php include_once "../includes/footerScripts.php";?>
 
     </body>
 
