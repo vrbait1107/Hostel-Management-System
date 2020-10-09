@@ -1,3 +1,18 @@
+<?php
+
+//--------------------------------->> DB CONFIG
+require_once "../config/configPDO.php";
+
+//--------------------------------->> START SESSION
+session_start();
+
+//--------------------------------->> START SESSION
+if (!isset($_SESSION["admin"])) {
+    header("location: admin_login.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="UTF-8">
