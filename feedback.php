@@ -96,12 +96,12 @@ try {
 					<div class="form-group">
 						<label for="">Username</label>
 						<input type="text" name="userName" id="userName" class="form-control" placeholder=""
-							aria-describedby="helpId">
+							aria-describedby="helpId" required>
 					</div>
 
 					<div class="form-group">
 						<label for="feedback">Your Feedback</label>
-						<textarea class="form-control" name="feedback" id="feedback" rows="3"></textarea>
+						<textarea class="form-control" name="feedback" id="feedback" rows="3" required></textarea>
 					</div>
 
 					<button type="submit" name="submit" id="submit" class="btn btn-primary">Submit</button>

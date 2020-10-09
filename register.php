@@ -36,58 +36,75 @@ try {
 
     if (isset($_POST["register-user"])) {
 
-        if (isset($_POST["terms"])) {
+        $userName = htmlspecialchars($_POST["userName"]);
+        $email = htmlspecialchars($_POST["email"]);
+        $firstName = htmlspecialchars($_POST["firstName"]);
+        $lastName = htmlspecialchars($_POST["lastName"]);
+        $password = htmlspecialchars($_POST["password"]);
+        $confirmPassword = htmlspecialchars($_POST["confirmPassword"]);
+        $gender = htmlspecialchars($_POST["gender"]);
 
-            $userName = htmlspecialchars($_POST["userName"]);
-            $email = htmlspecialchars($_POST["email"]);
-            $firstName = htmlspecialchars($_POST["firstName"]);
-            $lastName = htmlspecialchars($_POST["lastName"]);
-            $password = htmlspecialchars($_POST["password"]);
-            $confirmPassword = htmlspecialchars($_POST["confirmPassword"]);
-            $gender = htmlspecialchars($_POST["gender"]);
+        $sql1 = "SELECT * FROM user_information  WHERE userName = :userName";
 
-            # Hash Password
-            $hashPass = password_hash($password, PASSWORD_BCRYPT);
-            $hashConPass = password_hash($confirmPassword, PASSWORD_BCRYPT);
+        $result1 = $conn->prepare($sql1);
 
-            # Sql Query
-            $sql = "INSERT INTO user_information (userName, firstName, lastName, password, email, gender) VALUES
+        $result1->bindValue(":userName", $userName);
+
+        if ($result1->rowCount() > 0) {
+
+            if (isset($_POST["terms"])) {
+
+                # Hash Password
+                $hashPass = password_hash($password, PASSWORD_BCRYPT);
+                $hashConPass = password_hash($confirmPassword, PASSWORD_BCRYPT);
+
+                # Sql Query
+                $sql = "INSERT INTO user_information (userName, firstName, lastName, password, email, gender) VALUES
 		(:userName, :firstName, :lastName, :hashPass, :email, :gender)";
 
-            # Prepare Query
-            $result = $conn->prepare($sql);
+                # Prepare Query
+                $result = $conn->prepare($sql);
 
-            # Binding Value
-            $result->bindValue(":userName", $userName);
-            $result->bindValue(":firstName", $firstName);
-            $result->bindValue(":lastName", $lastName);
-            $result->bindValue(":hashPass", $hashPass);
-            $result->bindValue(":email", $email);
-            $result->bindValue(":gender", $gender);
+                # Binding Value
+                $result->bindValue(":userName", $userName);
+                $result->bindValue(":firstName", $firstName);
+                $result->bindValue(":lastName", $lastName);
+                $result->bindValue(":hashPass", $hashPass);
+                $result->bindValue(":email", $email);
+                $result->bindValue(":gender", $gender);
 
-            # Execute Query
-            $result->execute();
+                # Execute Query
+                $result->execute();
 
-            if ($result) {
-                echo "<script>Swal.fire({
+                if ($result) {
+                    echo "<script>Swal.fire({
                     icon: 'success',
                     title: 'Success',
                     text: 'You have registered successfully!',
 				})</script>";
 
-            } else {
-                echo "<script>Swal.fire({
+                } else {
+                    echo "<script>Swal.fire({
                     icon: 'error',
                     title: 'Error',
                     text: 'We failed to register you!',
                 })</script>";
+                }
+
+            } else {
+                echo "<script>Swal.fire({
+                    icon: 'warning',
+                    title: 'Warning',
+                    text: 'Please Select Checkbox of Terms and Condtions  !',
+                })</script>";
+
             }
 
         } else {
             echo "<script>Swal.fire({
                     icon: 'warning',
                     title: 'Warning',
-                    text: 'We failed to register you!',
+                    text: 'Username Already Taken!',
                 })</script>";
 
         }
@@ -146,19 +163,6 @@ include_once "includes/authNavbar.php";
 						placeholder="Enter Your Last Name" aria-describedby="helpId">
 				</div>
 
-				<div class="form-group">
-					<label for="password">Password</label>
-					<input type="password" name="password" id="password" class="form-control"
-						placeholder="Enter Your Password" aria-describedby="helpId">
-				</div>
-
-				<div class="form-group">
-					<label for="confirmPassword">Confirm Password</label>
-					<input type="password" name="confirmPassword" id="confirmPassword" class="form-control"
-						placeholder="Confirm Your Password" aria-describedby="helpId">
-				</div>
-
-
 
 				<div class="form-group">
 					<label for="gender">Gender</label>
@@ -179,6 +183,20 @@ include_once "includes/authNavbar.php";
 
 				</div>
 
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input type="password" name="password" id="password" class="form-control"
+						placeholder="Enter Your Password" aria-describedby="helpId">
+						 <small class="text-danger">Password should Contain atleast 8 Character, Minimum one uppercase letter,
+               Minimum one lowercase letter,
+               minimum one number, Minimum one special character. </small>
+				</div>
+
+				<div class="form-group">
+					<label for="confirmPassword">Confirm Password</label>
+					<input type="password" name="confirmPassword" id="confirmPassword" class="form-control"
+						placeholder="Confirm Your Password" aria-describedby="helpId">
+				</div>
 
 				<div class="form-check">
 					<label class="form-check-label">
@@ -199,6 +217,9 @@ include_once "includes/authNavbar.php";
 
 	<!-- Include FooterScripts -->
 	<?php include_once "includes/footerScripts.php";?>
+
+	<!-- Javascript -->
+	<script src="js/register.js"></script>
 
 </body>
 
