@@ -14,13 +14,17 @@ and Student
 
 **For Normal Users**
 
-- Emails: From testuser01@gmail.com to testuser20@gmail.com
-- Password: User@12345 (For above 20 Emails.)
+- Username: From testUser01 to testUser20
+- Password: User@12345 (For above 20 Username.)
 
 **For Administrator**
 
-- Emails: administrator@gmail.com
+- Username: administrator@gmail.com
 - Password: Admin@123
+
+## Project Screenshots
+
+- View Project Screenshots in pdf format. [View Screenshots](./Project%20Screenshots/PROJECT%20SCREENSHOTS.pdf)
 
 ## License
 

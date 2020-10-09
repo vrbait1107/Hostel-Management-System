@@ -45,7 +45,7 @@ if (!isset($_SESSION["admin"])) {
                         <thead>
                             <tr class="tableizer-firstrow">
                                 <th>Name</th>
-                                <th>Complaint </th>
+                                <th>Feeback</th>
                             </tr>
                         </thead>
 
