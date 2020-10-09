@@ -32,7 +32,7 @@ Event Branding Application is [GNU GPL v3.0 licensed](./LICENSE).
 
 ## Contributing Guide
 
-- Read our [Contributing Guide](./CONTRIBUTING.md) to learn about our development process, how to propose bugfixes and improvements, and how to build and test your changes to Event Branding Application.
+- Read our [Contributing Guide](./CONTRIBUTING.md) to learn about our development process, how to propose bugfixes and improvements, and how to build and test your changes to Hostel Mangement System.
 - Please feel free to contribute in this project as well as other project in this account.
 
 ## Technology Used
