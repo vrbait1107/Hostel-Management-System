@@ -1,7 +1,15 @@
 <?php
 
-//----------------------------->> DB CONFIG
+//--------------------------------->> DB CONFIG
 require_once "../config/configPDO.php";
+
+//--------------------------------->> START SESSION
+session_start();
+
+//--------------------------------->> START SESSION
+if (isset($_SESSION["admin"])) {
+    header("location: adminIndex.php");
+}
 
 ?>
 
@@ -60,7 +68,7 @@ try {
         $password = htmlspecialchars($_POST["password"]);
 
         # Sql Query
-        $sql = "SELECT password from admin_information WHERE username";
+        $sql = "SELECT password from admin_information WHERE userName = :userName";
 
         # Prepare Query
         $result = $conn->prepare($sql);
@@ -79,7 +87,7 @@ try {
 
             # If verify redirect to Index Page
             $_SESSION['admin'] = $userName;
-            header("Location: admin_page.php");
+            header("Location: adminIndex.php");
 
         } else {
             echo "<script>Swal.fire({
@@ -100,8 +108,14 @@ try {
 
 ?>
 
-  <!-- Include Navbar -->
-  <?php include_once "../includes/authNavbar.php";?>
+  <!-- Include Auth Navbar -->
+   <?php
+$userNavbarValue = "../login.php";
+$registerNavbarValue = "../register.php";
+$adminNavbarValue = "admin_login.php";
+
+include_once "../includes/authNavbar.php";
+?>
 
 
   <div class="container" id="topContainer">

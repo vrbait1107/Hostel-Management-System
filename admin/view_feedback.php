@@ -1,15 +1,36 @@
+<?php
+
+//--------------------------------->> DB CONFIG
+require_once "../config/configPDO.php";
+
+//--------------------------------->> START SESSION
+session_start();
+
+//--------------------------------->> START SESSION
+if (!isset($_SESSION["admin"])) {
+    header("location: admin_login.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Feedback</title>
 
-<!-- Include HeaderScripts -->
-<?php include_once "includes/headerScripts.php";?>
+   <!-- Include HeaderScripts -->
+  <?php include_once "../includes/headerScripts.php";?>
+  <link rel="stylesheet" href="../css/common.css">
+
 
 </head>
 
     <body>
+
+    <!-- Include Admin Navbar -->
+    <?php include_once "../includes/adminNavbar.php";?>
+
 
 
          <div class="container">

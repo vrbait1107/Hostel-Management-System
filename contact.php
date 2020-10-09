@@ -1,3 +1,20 @@
+<?php
+//--------------------------------->> DB CONFIG
+require_once "config/configPDO.php";
+
+//--------------------------------->> SESSION START
+session_start();
+
+//--------------------------------->> CHECK USER
+//--------------------------------->> CHECK USER
+if (!isset($_SESSION['user'])) {
+    header("Location: login.php");
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html>
 

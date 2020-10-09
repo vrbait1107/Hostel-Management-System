@@ -1,9 +1,16 @@
 <?php
-
-//------------------------->> DB CONFIG
+//--------------------------------->> DB CONFIG
 require_once "config/configPDO.php";
-?>
 
+//--------------------------------->> SESSION START
+session_start();
+
+//--------------------------------->> CHECK USER
+if (!isset($_SESSION['user'])) {
+    header("Location: login.php");
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +39,7 @@ try {
         $feedback = htmlspecialchars($_POST["feedback"]);
 
         # Sql Query
-        $sql = "INSERT INTO feedback (username, student_feedback) VALUES
+        $sql = "INSERT INTO feedback (userName, student_feedback) VALUES
 		(:userName, :feedback)";
 
         # Prepare Query

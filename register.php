@@ -1,7 +1,15 @@
 <?php
-
-// -------------------------------->> DB CONFIG
+//--------------------------------->> DB CONFIG
 require_once "config/configPDO.php";
+
+//--------------------------------->> SESSION START
+session_start();
+
+//--------------------------------->> CHECK USER
+if (isset($_SESSION['user'])) {
+    header("Location: index.php");
+}
+
 ?>
 
 
@@ -31,6 +39,7 @@ try {
         if (isset($_POST["terms"])) {
 
             $userName = htmlspecialchars($_POST["userName"]);
+            $email = htmlspecialchars($_POST["email"]);
             $firstName = htmlspecialchars($_POST["firstName"]);
             $lastName = htmlspecialchars($_POST["lastName"]);
             $password = htmlspecialchars($_POST["password"]);
@@ -39,7 +48,7 @@ try {
 
             # Hash Password
             $hashPass = password_hash($password, PASSWORD_BCRYPT);
-            $hashConPass = password_hash($confirm_password, PASSWORD_BCRYPT);
+            $hashConPass = password_hash($confirmPassword, PASSWORD_BCRYPT);
 
             # Sql Query
             $sql = "INSERT INTO user_information (userName, firstName, lastName, password, email, gender) VALUES
@@ -93,8 +102,14 @@ try {
 
 ?>
 
-	<!-- Include Navbar -->
-	<?php include_once "includes/authNavbar.php";?>
+	<!-- Include Auth Navbar -->
+   <?php
+$userNavbarValue = "login.php";
+$registerNavbarValue = "register.php";
+$adminNavbarValue = "admin/admin_login.php";
+
+include_once "includes/authNavbar.php";
+?>
 
 
 	<div class="container my-5">
@@ -113,8 +128,8 @@ try {
 				</div>
 
 				<div class="form-group">
-					<label for="userEmail">Email</label>
-					<input type="email" name="userEmail" id="userEmail" class="form-control"
+					<label for="email">Email</label>
+					<input type="email" name="email" id="email" class="form-control"
 						placeholder="Enter Your Email">
 				</div>
 

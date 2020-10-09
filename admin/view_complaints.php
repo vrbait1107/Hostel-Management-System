@@ -5,13 +5,18 @@
 <title>Feedback</title>
 
 <!-- Include HeaderScripts -->
-<?php include_once "includes/headerScripts.php";?>
+  <?php include_once "../includes/headerScripts.php";?>
+  <link rel="stylesheet" href="../css/common.css">
 
 </head>
 
 
 
 <body>
+
+   <!-- Include Admin Navbar -->
+  <?php include_once "../includes/adminNavbar.php";?>
+
 
 
     <div class="container">

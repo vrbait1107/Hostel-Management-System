@@ -4,12 +4,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>HOSTEL MANAGEMENT SYSTEM | ALLOTMENT</title>
 
-<!-- Include HeaderScripts -->
-<?php include_once "includes/headerScripts.php";?>
+  <!-- Include HeaderScripts -->
+  <?php include_once "../includes/headerScripts.php";?>
+  <link rel="stylesheet" href="../css/common.css">
+
 
 </head>
 
 <body>
+
+<!-- Include Admin Navbar -->
+  <?php include_once "../includes/adminNavbar.php";?>
+
 
    <div class="container">
         <div class="row">
@@ -22,10 +28,11 @@
 
                         <thead>
                             <tr class="tableizer-firstrow">
-                                <th>Room No.</th>
+                                <th>Username</th>
+                                <th>Email</th>
                                 <th>First Name </th>
                                 <th>Lastname</th>
-                                <th>Email</th>
+                                <th>Gender</th>
                             </tr>
                         </thead>
 
@@ -52,10 +59,11 @@ try {
             ?>
 
                             <tr>
-                                <td><?php echo $row["id"]; ?></td>
+                                <td><?php echo $row["userName"]; ?></td>
+                                <td><?php echo $row["email"]; ?></td>
                                 <td><?php echo $row["firstName"]; ?></td>
                                 <td><?php echo $row["lastName"]; ?></td>
-                                <td><?php echo $row["email"]; ?></td>
+                                <td><?php echo $row["gender"]; ?></td>
                             </tr>
 
 

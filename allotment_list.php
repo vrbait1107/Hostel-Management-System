@@ -33,7 +33,6 @@ require_once "config/configPDO.php";
 
                         <thead>
                             <tr class="tableizer-firstrow">
-                                <th>Room No.</th>
                                 <th>First Name </th>
                                 <th>Lastname</th>
                                 <th>Email</th>
@@ -63,7 +62,6 @@ try {
             ?>
 
                             <tr>
-                                <td><?php echo $row["id"]; ?></td>
                                 <td><?php echo $row["firstName"]; ?></td>
                                 <td><?php echo $row["lastName"]; ?></td>
                                 <td><?php echo $row["email"]; ?></td>

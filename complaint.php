@@ -3,6 +3,14 @@
 //------------------------->> DB CONFIG
 require_once "config/configPDO.php";
 
+//------------------------->> SESSION START
+session_start();
+
+//--------------------------------->> CHECK USER
+if (!isset($_SESSION['user'])) {
+    header("Location: login.php");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +43,7 @@ try {
         $complaint = htmlspecialchars($_POST["complaint"]);
 
         # Sql Query
-        $sql = "INSERT INTO complaints (username,student_complaint) VALUES
+        $sql = "INSERT INTO complaints (userName,student_complaint) VALUES
 			(:userName, :complaint)";
 
         # Prepare Query
