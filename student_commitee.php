@@ -1,35 +1,92 @@
-<!DOCTYPE php>
-<html xmlns="http://www.w3.org/1999/xphp">
+<?php
+//--------------------------------->> DB CONFIG
+require_once "config/configPDO.php";
+
+//--------------------------------->> SESSION START
+session_start();
+
+//--------------------------------->> CHECK USER
+if (!isset($_SESSION['user'])) {
+    header("Location: login.php");
+}
+
+?>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <link rel="shortcut icon" href="img/nitrr.ico" />
-     <title>::: National Institute of Technology Raipur :::</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="img/nitrr.ico" />
+	<title>HOSTEL MANAGEMENT SYSTEM | STUDENT COMMITEE</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Include HeaderScripts -->
+	<?php include_once "includes/headerScripts.php";?>
+
+</head>
+
+<body>
+
+	<!-- Include User Navbar -->
+	<?php include_once "includes/navbar.php";?>
+
+	<div class="container">
+		<div class="row my-5">
+			<div class="col-md-10 offset-md-1">
+				<h3 class="text-center font-Staatliches-heading">Hostel Student Commitee</h3>
+
+				<ul class="mt-5">
+
+					<li>CULTURAL COMMITTEE</li>
+					<hr />
+
+					<li>SPORTS COMMITTEE</li>
+					<hr />
+
+					<li>MESS COMMITTEE</li>
+					<hr />
+
+					<li>DISCIPLINE & ANTI-RAGGING COMMITTEE</li>
+					<hr />
+
+					<li> FIRST AID, HEALTH WATCH CLUB COUNSELLING & HEALTHY PRACTICES COMMITTEE</li>
+					<hr />
+
+					<li>LITERARY ASSOCIATION</li>
+					<hr />
+
+					<li>MAGAZINE COMMITTEE</li>
+					<hr />
+
+					<li>NATURE CLUB</li>
+					<hr />
+
+					<li>NATIONAL DAYS CELEBRATION COMMITTEE</li>
+					<hr />
+
+					<li> TRANSPORT COMMITTEE</li>
+					<hr />
+
+					<li>WOMEN CELL</li>
+					<hr />
+
+					<li> NEWS BULLETIN AND MEDIA COMMUNICATION COMMITTEE</li>
+					<hr />
+
+					<li> PUNCTUALITY & CURRICULUM VIGILANCE COMMITTEE</li>
+
+				</ul>
+
+			</div>
+		</div>
+	</div>
 
 
-    <div class="panel panel-primary" style="color:#26aae1;">
-	   <div class="panel-heading" style="background:#d3eef9; text-align:center;font-weight:bold;font-size:30px;"><i class="fa fa-bars" style="background:#26aae1;color:white; " aria-hidden="true"></i> &nbsp Student Committees</div>
-	   <div style="color:black;">
-	 <div class="panel-body">
-<br>
-	  <div class="content">
-                                	
-				   
-<br/><br/>
-					<ul style=" list-style-image: url('img/gear.png');list-style-position: inside;">
-                                                <br/><li>CULTURAL COMMITTEE</li>
-                                                <br/><li>SPORTS COMMITTEE</li>
-                                                <br/> <li>MESS COMMITTEE</li>
-                                                <br/> <li>DISCIPLINE & ANTI-RAGGING COMMITTEE</li>
-						<br/> <li> FIRST AID, HEALTH WATCH CLUB COUNSELLING & HEALTHY PRACTICES COMMITTEE</li>
-						<br/> <li>LITERARY ASSOCIATION</li>
-						<br/> <li>MAGAZINE COMMITTEE</li>
-						<br/> <li>NATURE CLUB</li>
-						<br/> <li>NATIONAL DAYS CELEBRATION COMMITTEE</li>
-						<br/> <li> TRANSPORT COMMITTEE</li>
-						<br/> <li>WOMEN CELL</li>
-						<br/> <li> NEWS BULLETIN AND MEDIA COMMUNICATION COMMITTEE</li>
-						<br/> <li> PUNCTUALITY & CURRICULUM VIGILANCE COMMITTEE</li>
-                                               
-								</ul>
-                                <br /><br />
-				
+	<!-- Include FooterScripts -->
+	<?php include_once "includes/footerScripts.php";?>
+
+</body>
+
+</html>

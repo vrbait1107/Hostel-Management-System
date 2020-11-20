@@ -1,30 +1,44 @@
 <?php
-//---------------------------->> DB CONGIG
-require_once "config/configPDO.php";
+
+//--------------------------------->> DB CONFIG
+require_once "../config/configPDO.php";
+
+//--------------------------------->> START SESSION
+session_start();
+
+//--------------------------------->> START SESSION
+if (!isset($_SESSION["admin"])) {
+    header("location: admin_login.php");
+}
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Feedback</title>
 
-<head lang="en">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hostel Room Allotment list</title>
-
-    <!-- Include HeaderScripts -->
-    <?php include_once "includes/headerScripts.php";?>
+<!-- Include HeaderScripts -->
+<?php include_once "../includes/headerScripts.php";?>
+<link rel="stylesheet" href="../css/common.css">
 
 </head>
 
+
+
 <body>
 
-    <!-- Include HeaderScripts -->
-    <?php include_once "includes/navbar.php";?>
+    <!-- Include Admin Navbar -->
+    <?php include_once "../includes/adminNavbar.php";?>
+
+
 
     <div class="container">
-        <div class="row">
+        <div class="row mt-5">
             <section class="col-md-12">
+
+                <h1 class="text-center font-Staatliches-heading">View Complaints</h1>
 
                 <div class="table-responsive">
 
@@ -33,9 +47,8 @@ require_once "config/configPDO.php";
 
                         <thead>
                             <tr class="tableizer-firstrow">
-                                <th>First Name </th>
-                                <th>Lastname</th>
-                                <th>Email</th>
+                                <th>Name</th>
+                                <th>Complaint </th>
                             </tr>
                         </thead>
 
@@ -46,7 +59,7 @@ require_once "config/configPDO.php";
 try {
 
     # Sql Query
-    $sql = "SELECT * FROM user_information";
+    $sql = "SELECT * FROM complaints";
 
     # Prepare Query
     $result = $conn->prepare($sql);
@@ -62,9 +75,8 @@ try {
             ?>
 
                             <tr>
-                                <td><?php echo $row["firstName"]; ?></td>
-                                <td><?php echo $row["lastName"]; ?></td>
-                                <td><?php echo $row["email"]; ?></td>
+                                <td><?php echo $row["userName"]; ?></td>
+                                <td><?php echo $row["student_complaint"]; ?></td>
                             </tr>
 
 
@@ -80,7 +92,7 @@ try {
                     <?php
 
     } else {
-        echo "<tr><td colspan='4'>No Records Found</td></tr>";
+        echo "<tr><td colspan='2' class='text-center'>No Records Found</td></tr>";
     }
 
 } catch (PDOException $e) {
@@ -97,9 +109,8 @@ try {
     </div>
 
 
-
     <!-- Include FooterScripts -->
-    <?php include_once "includes/footerScripts.php";?>
+    <?php include_once "../includes/footerScripts.php";?>
 
 </body>
 

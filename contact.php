@@ -1,30 +1,84 @@
-<!DOCTYPE php>
+<?php
+//--------------------------------->> DB CONFIG
+require_once "config/configPDO.php";
+
+//--------------------------------->> SESSION START
+session_start();
+
+//--------------------------------->> CHECK USER
+if (!isset($_SESSION['user'])) {
+    header("Location: login.php");
+}
+
+?>
+
+
+
+<!DOCTYPE html>
 <html>
-<!DOCTYPE php>
-<html xmlns="http://www.w3.org/1999/xphp">
+
 <head>
-    <link rel="shortcut icon" href="img/nitrr.ico" />
-     <title>::: National Institute of Technology Raipur :::</title>
+    <title>HOSTEL MANAGEMENT SYSTEM | CONTACT US</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
- <div class="panel panel-primary" style="color:#26aae1;">
-	   <div class="panel-heading" style="background:#d3eef9; text-align:center;font-weight:bold;font-size:30px;"><i class="fa fa-bars" style="background:#26aae1;color:white; " aria-hidden="true"></i> &nbsp Contact Us</div>
-	   <div style="color:black;">
-	 <div class="panel-body">
-<br>                                                
-</div>
-<i class="fa fa-bank"></i> National Institute of Technology&nbsp; Raipur<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G.E. Road, Raipur<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Chhatisgarh - 492010<br><br>
-    <i class="fa fa-phone-square"></i>&nbsp;Telephone Number&nbsp;&nbsp; +91-771-2254200  <br>
-<i class="	fa fa-fax"></i>&nbsp;Fax &nbsp;&nbsp;: +91-771-2254600	<br><br><br>
-<ul style=" list-style-image: url('img/gear.png');list-style-position: inside;">
-<li><i class="fa fa-bank"></i> Examination Section&nbsp; <br>
-    <i class="fa fa-phone-square"></i>&nbsp;Telephone Number&nbsp;&nbsp; 0771-6534775 </li> <br><br>
-<li><i class="fa fa-bank"></i> Student Section&nbsp; <br>
-    <i class="fa fa-phone-square"></i>&nbsp;Telephone Number&nbsp;&nbsp;+91-9039006447   </li><br><br>
-<li><i class="fa fa-bank"></i> Establishment Section&nbsp; <br>
-    <i class="fa fa-phone-square"></i>&nbsp;Telephone Number&nbsp;&nbsp;+91-9039006448  </li><br><br>
 
-                              
+    <!-- Include HeaderScripts -->
+    <?php include_once "includes/headerScripts.php";?>
+
+</head>
+
+<body>
+
+    <!-- Include Navbar -->
+    <?php include_once "includes/navbar.php";?>
 
 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mt-5 offset-md-3">
+
+
+                <div class="text-center mb-5">
+                    <h3 class="text-center font-Staatliches alert-info"><i class="fas fa-star"></i> Address</h3>
+                    <h5 class="font-sans">
+                        National Institute of Technology Raipur <br />
+                        G.E. Road, Raipur<br>
+                        Chhatisgarh - 492010
+                    </h5>
+                </div>
+
+                <div class="text-center mb-5">
+                    <h3 class="text-center font-Staatliches alert-info"><i class="fas fa-star"></i> Examination Section
+                    </h3>
+                    <h5 class="font-sans"><i class="fas fa-phone"></i>
+                        0771-6534775
+                    </h5>
+                </div>
+
+
+                <div class="text-center mb-5">
+                    <h3 class="text-center font-Staatliches alert-info"><i class="fas fa-star"></i> Student Section</h3>
+                    <h5 class="font-sans"><i class="fas fa-phone"></i>
+                        +91-9039006447
+                    </h5>
+                </div>
+
+                <div class="text-center mb-5">
+                    <h3 class="text-center font-Staatliches alert-info"><i class="fas fa-star"></i> Establishment
+                        Section
+                    </h3>
+                    <h5 class="font-sans"><i class="fas fa-phone"></i>
+                        +91-9039006448
+                    </h5>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Include FooterScripts -->
+    <?php include_once "includes/footerScripts.php";?>
+
+</body>
+
+</html>
