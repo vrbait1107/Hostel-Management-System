@@ -2,9 +2,8 @@
 
 A web application developed to handle various activities of a hostel such as storing and displaying information of students, feedback and complaints.
 
-Users:
-Admin (Hostel warden or caretaker)
-and Students
+- Administrator: Hostel Wardens.
+- Users: Hostel Students.
 
 ## Database
 
